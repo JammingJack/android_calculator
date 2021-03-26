@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import java.util.Stack;
+
 public class MainActivity extends AppCompatActivity {
     int valOne=0, valTwo=0;
     String operation;
@@ -31,6 +33,8 @@ public class MainActivity extends AppCompatActivity {
 
     }
     public void setOperand(View view){
+        Button btn = (Button)view;
+        /*
         if (view.getId()==R.id.buttonPlus){
             operation="+";
             result.setText(result.getText() + " " +operation+ " 0");
@@ -48,8 +52,13 @@ public class MainActivity extends AppCompatActivity {
             result.setText(result.getText() + " " +operation+ " 0");
         }
         isOperandOne = false;
+         */
+        result.setText(String.valueOf(result.getText())+btn.getText());
     }
     public void ajouterNbr(View view){
+
+        Button btn = (Button) view;
+        /*
         Button btn = (Button) view;
         if(isOperandOne){
             valOne = valOne*10 + Integer.parseInt(String.valueOf(btn.getText()));
@@ -59,6 +68,8 @@ public class MainActivity extends AppCompatActivity {
         }
             affiche();
 
+         */
+        result.setText(String.valueOf(result.getText())+btn.getText());
     }
     public void calcul(View view){
         if(operation.equals("+")){
@@ -87,5 +98,10 @@ public class MainActivity extends AppCompatActivity {
         valOne=0;
         valTwo=0;
         isOperandOne=true;
+    }
+
+    public void calcul3(View view){
+        int value = EvaluateString.evaluate(String.valueOf(result.getText()));
+        result.setText(String.valueOf(value));
     }
 }
